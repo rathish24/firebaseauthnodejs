@@ -1,18 +1,16 @@
 const express = require('express');
-const {addStudent, 
-       getAllStudents, 
-       getStudent,
-       updateStudent,
-       deleteStudent
+const {signup, 
+    login, 
+    logout,
+     
       } = require('../controllers/authController');
 
 const router = express.Router();
 
-router.post('/student', addStudent);
-router.get('/students', getAllStudents);
-router.get('/student/:id', getStudent);
-router.put('/student/:id', updateStudent);
-router.delete('/student/:id', deleteStudent);
+router.post('/auth', signup);
+router.post('/auth', login);
+router.get('/auth', logout);
+
 
 
 module.exports = {
