@@ -1,14 +1,14 @@
 'use strict';
 
-const firebase = require('../db');
+const db = require('../db');
 const Post = require('../models/post');
-const firestore = firebase.firestore();
+//const firestore = firebase.firestore();
 
 const getAllPosts= async (req, res, next) => {
     try {
         // let pageSize = 10
         // let field = "createAt"
-        const posts = await firestore.collection('posts');
+        const posts = await db.collection('posts');
         const data = await posts.get();
         const postArray = [];
         if(data.empty) {
