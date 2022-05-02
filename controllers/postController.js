@@ -1,7 +1,11 @@
 'use strict';
 
-const db = require('../db');
+//const db = require('../db');
+const {admin,db
+} = require('../db');
 const Post = require('../models/post');
+
+
 //const firestore = firebase.firestore();
 
 const getAllPosts= async (req, res, next) => {
@@ -9,7 +13,9 @@ const getAllPosts= async (req, res, next) => {
         // let pageSize = 10
         // let field = "createAt"
         const posts = await db.collection('posts');
+        console.log('posts-------',posts)
         const data = await posts.get();
+        console.log('data-------',data)
         const postArray = [];
         if(data.empty) {
             res.status(404).send('No record found');
@@ -28,6 +34,7 @@ const getAllPosts= async (req, res, next) => {
             res.send(postArray);
         }
     } catch (error) {
+        console.log('error.message-------',error.message)
         res.status(400).send(error.message);
     }
 }
